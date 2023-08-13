@@ -7,7 +7,7 @@ import { FactoryUrl } from '../model/FactoryUrl';
 dotenv.config();
 
 const app: Express = express();
-app.use(express.static('public'))
+
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
