@@ -1,36 +1,58 @@
-Here is a readme in English about this program:
+# Images From URL
 
-images-from-url
-This program is a software that given a url in the body of the endpoint /image returns a list of urls that are the images of the page in question. This program also allows you to pass filters to make the images more specific, in particular, filters in css language as a string, for example .separator a. This would be the element a that is inside the class separator. Currently it uses cheerio as a scrapper but more scrappers are planned to be added.
+**Description:**
+Images From URL is a versatile software tool designed to retrieve a list of image URLs from a given webpage. By utilizing the API endpoint `/image` and providing a URL in the request body, the program extracts images from the specified webpage. Moreover, this program offers the flexibility to apply filters to narrow down the selection of images. These filters are defined using CSS selectors, allowing users to target specific elements on the page.
 
-Installation
-To install this program, you need to have Node.js and npm installed on your system. Then, you can clone this repository and run npm install to install the dependencies.
+**Features:**
+- Extracts image URLs from a provided webpage URL.
+- Supports the application of CSS-based filters for precise image selection.
+- Utilizes the Cheerio library for web scraping.
+- Designed for extensibility with plans to incorporate additional web scraping libraries.
 
-Usage
-To start the program, run npm start or node index.js. This will launch a server on port 3000 by default. You can change the port by setting the PORT environment variable.
+**Usage:**
 
-To get the images from a url, send a POST request to /image with the url as the body. For example, using curl:
+**Endpoint:** `/image`
 
-curl -X POST -d "https://www.bing.com" http://localhost:3000/image
+**Method:** POST
 
-This will return a JSON array of image urls from the page. For example:
+**Request Body:**
+```json
+{
+  "url": "https://example.com",
+  "filter": ".separator a"
+}
+```
+- url (required): The URL of the webpage from which images will be extracted.
+- filter (optional): A CSS selector filter to target specific image elements.
 
-[
-  "https://www.bing.com/th?id=OHR.SnowyOwl_ZH-CN9805076379_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
-  "https://www.bing.com/th?id=OHR.SnowyOwl_ZH-CN9805076379_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp",
-  "https://www.bing.com/th?id=OHR.SnowyOwl_ZH-CN9805076379_1366x768.jpg&rf=LaDigue_1366x768.jpg&pid=hp",
-  ...
-]
+**Sample Response:**
+```json
+{
+  "images": [
+    "https://example.com/images/image1.jpg",
+    "https://example.com/images/image2.jpg",
+    "https://example.com/images/image3.jpg"
+  ]
+}
+```
 
-To apply filters to the images, you can add a query parameter filter with the css selector as the value. For example, to get only the images that are inside an element with class logo, you can use:
+**Getting Started**
+1. Ensure you have Node.js installed on your system.
+2. Clone the repository: git clone https://github.com/yourusername/images-from-url.git
+3. Navigate to the project directory: cd images-from-url
+4. Install dependencies: npm install
+5. Start the application: npm start
 
-curl -X POST -d "https://www.bing.com" ".separator" http://localhost:3000/image
+**Future Enhancements**
+-Integration of additional web scraping libraries for enhanced versatility.
+-Implementation of more advanced filtering options to refine image selection.
+-Support for bulk processing of multiple URLs in a single request.
 
-This will return only the image urls that match the filter. For example:
-
-[
-  "https://www.bing.com/sa/simg/hpc27.png"
-]
+**Contributions**
+Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request.
 
 License
-This program is licensed under the MIT License. See [LICENSE] for more details.
+This project is licensed under the MIT License.
+
+Contact
+For any inquiries or feedback, please contact us at francopescee@gmail.com
