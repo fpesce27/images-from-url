@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const FactoryUrl_1 = require("../model/FactoryUrl");
+const Url_1 = require("../model/Url");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
@@ -15,7 +15,7 @@ app.use(body_parser_1.default.urlencoded({
     extended: true,
 }));
 app.get('/api/images', (req, res) => {
-    const url = FactoryUrl_1.FactoryUrl.create(req.query.url, req.query.filters);
+    const url = new Url_1.Url(req.body.url, req.body.filters);
     url.get_images().then((imageUrls) => {
         res.send(imageUrls);
     });

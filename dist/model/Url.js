@@ -10,8 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Url = void 0;
+const Cheerio_1 = require("./Cheerio");
 class Url {
-    constructor(url, filters = '', scrapper) {
+    constructor(url, filters = '', scrapper = new Cheerio_1.Cheerio()) {
         this.url = url;
         this.filters = filters;
         this.scrapper = scrapper;

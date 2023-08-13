@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import { FactoryUrl } from '../model/FactoryUrl';
+import { Url } from '../model/Url';
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.use(
 );
 
 app.get('/api/images', (req: Request, res: Response) => {
-  const url = FactoryUrl.create(req.query.url as string, req.query.filters as string);
+  const url = new Url(req.body.url as string, req.body.filters as string);
   url.get_images().then((imageUrls) => {
     res.send(imageUrls);
   });
