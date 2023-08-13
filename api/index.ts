@@ -17,7 +17,7 @@ app.use(
   }),
 );
 
-app.get('/images', (req: Request, res: Response) => {
+app.get('/api/images', (req: Request, res: Response) => {
   const url = FactoryUrl.create(req.query.url as string, req.query.filters as string);
   url.get_images().then((imageUrls) => {
     res.send(imageUrls);
