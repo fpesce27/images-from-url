@@ -1,7 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import { Url } from '../model/Url';
 import { FactoryUrl } from '../model/FactoryUrl';
 
 dotenv.config();
