@@ -16,7 +16,7 @@ app.use(
   }),
 );
 
-app.get('/api/images', (req: Request, res: Response) => {
+app.post('/api/images', (req: Request, res: Response) => {
   const url = new Url(req.body.url as string, req.body.filters as string);
   url.get_images().then((imageUrls) => {
     res.send(imageUrls);
